@@ -3,6 +3,7 @@ package hackerrank;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 public class SubStrings {
@@ -33,8 +34,25 @@ public class SubStrings {
 				return 1;
 			else if (o1.charAt(0) < o2.charAt(0))
 				return -1;
-			else
-				return 0;
+			else {
+				if(o1.length() > 1 || o2.length() > 1)
+					return ifFirstSame(o1, o2);
+				else
+					return 0;
+			}
+		}
+		
+		private static int ifFirstSame(String a, String b) {
+			for(int i = 1; i <= a.length() && i <= b.length(); i++) {
+				if(a.charAt(i) != b.charAt(i)) {
+					if(a.charAt(i) > b.charAt(i))
+						return 1;
+					else if (a.charAt(i) < b.charAt(i))
+						return -1;
+				}
+			}
+			
+			return 0;
 		}
 		
 	}
